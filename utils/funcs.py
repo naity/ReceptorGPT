@@ -118,21 +118,6 @@ def format_result(tcr_matches):
 def run_stitchr(tcr, verbose=False):
     species = tcr["Species"].lower()
 
-    data_files = importlib_resources.files("Data")
-    if not (data_files / f"{species.upper()}").exists():
-        try:
-            # download suitably formatted data sets for the species
-            subprocess.run(
-                f"stitchrdl -s {species}",
-                stdout=subprocess.PIPE,
-                shell=True,
-                check=True,
-            )
-        except subprocess.CalledProcessError as e:
-            if verbose:
-                print(e)
-            return None
-
     v = tcr["TRBV"]
     j = tcr["TRBJ"]
     cdr3 = tcr["CDR3.beta.aa"]
@@ -151,7 +136,7 @@ def run_stitchr(tcr, verbose=False):
     cmd = f"stitchr -s {species} -v {v} -j {j} -cdr3 {cdr3} -m AA"
     try:
         result = subprocess.run(cmd, stdout=subprocess.PIPE, shell=True, check=True)
-    except subprocess.CalledProcessError as e:
+    except Exception as e:
         if verbose:
             print(e)
         # return None if stitchr fails

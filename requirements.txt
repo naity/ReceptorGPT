@@ -6,7 +6,9 @@ chromadb==0.4.17
 streamlit==1.28.2
 tqdm==4.66.1
 Pillow==10.1.0
-stitchr==1.1.2
+# custom version of stitchr for Streamlit Cloud file path
+# stitchr==1.1.2
+-e git+https://github.com/naity/stitchr.git@change_datadir#egg=stitchr
 IMGTgeneDL==0.5.2
 py3Dmol==2.0.0.post2
 stmol==0.0.9
