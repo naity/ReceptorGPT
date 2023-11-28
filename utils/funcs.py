@@ -153,7 +153,7 @@ def fold_sequence(sequence):
         "https://api.esmatlas.com/foldSequence/v1/pdb/",
         headers=headers,
         data=sequence,
-        # verify=False,
+        verify=False,
     )
 
 
