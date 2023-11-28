@@ -77,12 +77,13 @@ def upsert_to_collection(collection, ids, embeddings, metadatas, batch_size=1000
         )
 
 
-def search_embedding(collection, embedding, top_k):
+def search_embedding(collection, embedding, top_k, species):
     """Search a single embedding against the TCR vector database."""
     results = collection.query(
         query_embeddings=embedding,
         n_results=top_k,
         include=["metadatas", "distances"],
+        where={"Species": species},
     )
 
     # return the first items

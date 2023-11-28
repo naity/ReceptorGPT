@@ -129,7 +129,7 @@ def search_tcr():
         embedding = get_embeddings(tokenizer, model, [tcr["CDR3.beta.aa"]])
         # convert to list
         embedding = embedding.tolist()
-        tcr_matches = search_embedding(collection, embedding, _state.k)
+        tcr_matches = search_embedding(collection, embedding, _state.k, _state.species)
         df = format_result(tcr_matches)
 
         if _state.run_fold and tcr["TRBV"] and tcr["TRBJ"]:
