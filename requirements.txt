@@ -12,3 +12,4 @@ py3Dmol==2.0.0.post2
 stmol==0.0.9
 requests==2.31.0
 ipython-genutils==0.2.0
+pysqlite3-binary==0.5.2.post2
